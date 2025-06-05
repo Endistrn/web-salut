@@ -8,25 +8,30 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
 <body class="bg-[#80D8C3] text-[rgb(245,245,245)] min-h-screen flex flex-col">
   <header class="bg-[#075B5E] shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-4">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between flex-wrap">
+      <div class="flex items-center space-x-4 flex-shrink-0">
         <img src="https://raw.githubusercontent.com/Endistrn/web-salut/main/logo%20salut.jpg" alt="Logo Salut Liwa, a stylized emblem with blue and yellow colors representing the Salut Liwa institution" class="h-12 w-auto rounded-md shadow-md" />
-        <h1 class="text-2xl font-semibold">DATA MAHASISWA SALUT LIWA</h1>
+        <h1 class="text-2xl font-semibold whitespace-nowrap">DATA MAHASISWA SALUT LIWA</h1>
       </div>
-      <nav>
-        <ul class="flex space-x-6 text-[rgb(245,245,245)] text-sm font-medium items-center">
+      <nav class="mt-3 sm:mt-0">
+        <ul class="flex space-x-6 text-sm font-medium items-center justify-center">
           <li>
-            <a href="#form" aria-label="Form Data" class="icon-link hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 p-1" title="Form Data">
-              <i class="fas fa-list text-lg"></i>
+            <a href="#form" aria-label="Form Data" class="icon-link hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 p-1 rounded bg-[#F5F5F5]" title="Form Data">
+              <i class="fas fa-list text-[#075B5E] text-lg"></i>
             </a>
           </li>
           <li>
-            <a href="#list" aria-label="Daftar Mahasiswa" class="icon-link hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 p-1" title="Daftar Mahasiswa">
-              <i class="fas fa-users text-lg"></i>
+            <a href="#list" aria-label="Daftar Mahasiswa" class="icon-link hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 p-1 rounded bg-[#F5F5F5]" title="Daftar Mahasiswa">
+              <i class="fas fa-users text-[#075B5E] text-lg"></i>
             </a>
           </li>
         </ul>
@@ -172,13 +177,34 @@
             placeholder="MASUKKAN NOMOR TELEPON"
           />
         </div>
+        <div>
+          <label for="semester" class="block mb-1 font-medium">SEMESTER</label>
+          <select
+            id="semester"
+            name="semester"
+            required
+            class="w-full rounded-md px-3 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]"
+          >
+            <option value="" disabled selected>PILIH SEMESTER</option>
+            <option value="semester 1">Semester 1</option>
+            <option value="semester 2">Semester 2</option>
+            <option value="semester 3">Semester 3</option>
+            <option value="semester 4">Semester 4</option>
+            <option value="semester 5">Semester 5</option>
+            <option value="semester 6">Semester 6</option>
+            <option value="semester 7">Semester 7</option>
+            <option value="semester 8">Semester 8</option>
+            <option value="semester 9">Semester 9</option>
+            <option value="semester lepas">Semester Lepas</option>
+          </select>
+        </div>
         <div class="text-center">
           <button
             type="submit"
             class="bg-[#F5F5F5] text-[#4DA8DA] font-semibold rounded-md px-6 py-2 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#F5F5F5] inline-flex items-center justify-center"
           >
             SIMPAN DATA
-            <span id="saveIcon">
+            <span id="saveIcon" class="ml-2">
               <img src="https://raw.githubusercontent.com/Endistrn/web-salut/main/diskette.png" alt="Icon diskette, a classic floppy disk symbol representing save action, blue and white colors" class="w-5 h-5" />
             </span>
           </button>
@@ -186,27 +212,40 @@
       </form>
     </section>
 
-    <section id="list" class="mt-12 max-w-5xl mx-auto">
-      <h2 class="text-xl font-semibold mb-6 text-center normal-case" style="color: #F5F5F5;">Daftar Mahasiswa</h2>
+    <section id="list" class="mt-12 max-w-7xl mx-auto">
+      <h2 class="text-xl font-semibold mb-6 text-center normal-case" style="color: #F5F5F5;">Daftar Mahasiswa per Semester</h2>
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button data-semester="semester 1" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 1</button>
+        <button data-semester="semester 2" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 2</button>
+        <button data-semester="semester 3" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 3</button>
+        <button data-semester="semester 4" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 4</button>
+        <button data-semester="semester 5" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 5</button>
+        <button data-semester="semester 6" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 6</button>
+        <button data-semester="semester 7" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 7</button>
+        <button data-semester="semester 8" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 8</button>
+        <button data-semester="semester 9" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester 9</button>
+        <button data-semester="semester lepas" class="semesterFilterBtn bg-[#4DA8DA] hover:bg-[#3a8acb] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Semester Lepas</button>
+        <button data-semester="all" class="semesterFilterBtn bg-[#2a8a4d] hover:bg-[#23703b] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-[#F5F5F5]">Tampilkan Semua</button>
+      </div>
       <div class="overflow-x-auto rounded-lg shadow-lg bg-[#075B5E]">
         <table class="min-w-full text-left" style="color: #F5F5F5;">
           <thead class="border-b" style="border-color: #F5F5F5;">
             <tr>
-              <th class="px-4 py-3">No</th>
-              <th class="px-4 py-3">Nama</th>
-              <th class="px-4 py-3">NIM</th>
-              <th class="px-4 py-3">Tempat Lahir</th>
-              <th class="px-4 py-3">Tanggal Lahir</th>
-              <th class="px-4 py-3">Email Admisi</th>
-              <th class="px-4 py-3">NIK</th>
-              <th class="px-4 py-3">Alamat</th>
-              <th class="px-4 py-3">Nama Ibu Kandung</th>
-              <th class="px-4 py-3">Nomor Telepon</th>
-              <th class="px-4 py-3">Aksi</th>
+              <th class="px-4 py-3 whitespace-nowrap">No</th>
+              <th class="px-4 py-3 whitespace-nowrap">Nama</th>
+              <th class="px-4 py-3 whitespace-nowrap">NIM</th>
+              <th class="px-4 py-3 whitespace-nowrap">Tempat Lahir</th>
+              <th class="px-4 py-3 whitespace-nowrap">Tanggal Lahir</th>
+              <th class="px-4 py-3 whitespace-nowrap">Email Admisi</th>
+              <th class="px-4 py-3 whitespace-nowrap">NIK</th>
+              <th class="px-4 py-3 whitespace-nowrap">Alamat</th>
+              <th class="px-4 py-3 whitespace-nowrap">Nama Ibu Kandung</th>
+              <th class="px-4 py-3 whitespace-nowrap">Nomor Telepon</th>
+              <th class="px-4 py-3 whitespace-nowrap">Semester</th>
+              <th class="px-4 py-3 whitespace-nowrap">Aksi</th>
             </tr>
           </thead>
           <tbody id="mahasiswaList" class="divide-y" style="border-color: #F5F5F5;">
-            <!-- Data rows will be inserted here dynamically -->
           </tbody>
         </table>
       </div>
@@ -220,33 +259,39 @@
   <script>
     const form = document.getElementById('mahasiswaForm');
     const list = document.getElementById('mahasiswaList');
+    const semesterButtons = document.querySelectorAll('.semesterFilterBtn');
 
     // Load saved data from localStorage or initialize empty array
     let mahasiswaData = JSON.parse(localStorage.getItem('mahasiswaData')) || [];
 
-    function renderList() {
+    function renderList(filterSemester = 'all') {
       list.innerHTML = '';
-      if (mahasiswaData.length === 0) {
-        list.innerHTML = `<tr><td colspan="11" class="text-center py-4" style="color: #F5F5F5;">Belum ada data mahasiswa.</td></tr>`;
+      let filteredData = mahasiswaData;
+      if (filterSemester !== 'all') {
+        filteredData = mahasiswaData.filter(m => m.semester === filterSemester);
+      }
+      if (filteredData.length === 0) {
+        list.innerHTML = `<tr><td colspan="12" class="text-center py-4" style="color: #F5F5F5;">Belum ada data mahasiswa${filterSemester !== 'all' ? ' untuk ' + filterSemester : ''}.</td></tr>`;
         return;
       }
-      mahasiswaData.forEach((mhs, index) => {
+      filteredData.forEach((mhs, index) => {
         const tr = document.createElement('tr');
         tr.classList.add('hover:bg-[#6bb9d6]');
         tr.style.color = '#F5F5F5';
         tr.innerHTML = `
-          <td class="px-4 py-2 align-top">${index + 1}</td>
+          <td class="px-4 py-2 align-top whitespace-nowrap">${index + 1}</td>
           <td class="px-4 py-2 align-top break-words max-w-xs">${mhs.nama}</td>
-          <td class="px-4 py-2 align-top">${mhs.nim}</td>
-          <td class="px-4 py-2 align-top">${mhs.tempatLahir}</td>
-          <td class="px-4 py-2 align-top">${mhs.tanggalLahir}</td>
+          <td class="px-4 py-2 align-top whitespace-nowrap">${mhs.nim}</td>
+          <td class="px-4 py-2 align-top whitespace-nowrap">${mhs.tempatLahir}</td>
+          <td class="px-4 py-2 align-top whitespace-nowrap">${mhs.tanggalLahir}</td>
           <td class="px-4 py-2 align-top break-words max-w-xs">${mhs.emailAdmisi}</td>
-          <td class="px-4 py-2 align-top">${mhs.nik}</td>
+          <td class="px-4 py-2 align-top whitespace-nowrap">${mhs.nik}</td>
           <td class="px-4 py-2 align-top break-words max-w-xs">${mhs.alamat}</td>
           <td class="px-4 py-2 align-top break-words max-w-xs">${mhs.namaIbu}</td>
-          <td class="px-4 py-2 align-top">${mhs.nomorTelpon}</td>
-          <td class="px-4 py-2 align-top">
-            <button aria-label="Hapus data mahasiswa ${mhs.nama}" data-index="${index}" class="deleteBtn hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400" style="color: #F5F5F5;">
+          <td class="px-4 py-2 align-top whitespace-nowrap">${mhs.nomorTelpon}</td>
+          <td class="px-4 py-2 align-top whitespace-nowrap">${mhs.semester}</td>
+          <td class="px-4 py-2 align-top whitespace-nowrap">
+            <button aria-label="Hapus data mahasiswa ${mhs.nama}" data-nim="${mhs.nim}" class="deleteBtn hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400" style="color: #F5F5F5;">
               <i class="fas fa-trash-alt"></i>
             </button>
           </td>
@@ -257,15 +302,29 @@
       // Attach delete event listeners
       document.querySelectorAll('.deleteBtn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-          const idx = e.currentTarget.getAttribute('data-index');
-          if (confirm(`Yakin ingin menghapus data mahasiswa "${mahasiswaData[idx].nama}"?`)) {
-            mahasiswaData.splice(idx, 1);
-            localStorage.setItem('mahasiswaData', JSON.stringify(mahasiswaData));
-            renderList();
+          const nimToDelete = e.currentTarget.getAttribute('data-nim');
+          const idx = mahasiswaData.findIndex(m => m.nim === nimToDelete);
+          if (idx !== -1) {
+            if (confirm(`Yakin ingin menghapus data mahasiswa "${mahasiswaData[idx].nama}"?`)) {
+              mahasiswaData.splice(idx, 1);
+              localStorage.setItem('mahasiswaData', JSON.stringify(mahasiswaData));
+              renderList(currentFilter);
+            }
           }
         });
       });
     }
+
+    let currentFilter = 'all';
+
+    semesterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        currentFilter = button.getAttribute('data-semester');
+        semesterButtons.forEach(btn => btn.classList.remove('ring-4', 'ring-[#F5F5F5]'));
+        button.classList.add('ring-4', 'ring-[#F5F5F5]');
+        renderList(currentFilter);
+      });
+    });
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -288,6 +347,7 @@
         alamat: form.alamat.value.trim(),
         namaIbu: form.namaIbu.value.trim(),
         nomorTelpon: form.nomorTelpon.value.trim(),
+        semester: form.semester.value,
       };
 
       // Check for duplicate NIM or NIK
@@ -304,14 +364,15 @@
 
       mahasiswaData.push(newMahasiswa);
       localStorage.setItem('mahasiswaData', JSON.stringify(mahasiswaData));
-      renderList();
+      renderList(currentFilter);
       form.reset();
       form.nama.focus();
       alert('Data mahasiswa berhasil disimpan.');
     });
 
-    // Initial render
-    renderList();
+    // Initial render with "Tampilkan Semua" selected
+    document.querySelector('.semesterFilterBtn[data-semester="all"]').classList.add('ring-4', 'ring-[#F5F5F5]');
+    renderList('all');
   </script>
 </body>
 </html>
